@@ -1,0 +1,51 @@
+<div style="padding:10px;margin:10px;">
+  <div class="row d-flex">
+    <div class="col-md-6 pull-left">
+      <h3>Visitors</h3>
+    </div>
+    <div class="col-md-6">
+      <button type="button" class="btn btn-outline-primary pull-right" style="float:right" (click)="add()">Add Visitor</button>
+    </div>
+  </div>
+    <ngx-datatable
+      style="height: 600px; box-shadow: none;touch-action:none"
+      class="material fullscreen"
+      [rows]="visitors"
+      [columns]="columns"
+      [headerHeight]="50"
+      [footerHeight]="50"
+      [rowHeight]="50"
+      [scrollbarV]="true"
+      columnMode="force"
+      [loadingIndicator]="loadingIndicator"
+    >
+    <ngx-datatable-column prop="firstname">
+      <ng-template ngx-datatable-cell-template let-value="value">
+        {{value}}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column prop="lastname">
+      <ng-template ngx-datatable-cell-template let-value="value">
+        {{value}}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column prop="email">
+      <ng-template ngx-datatable-cell-template let-value="value">
+        {{value}}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column prop="DOB">
+      <ng-template ngx-datatable-cell-template let-value="value">
+        {{value | date : 'dd/MM/yyyy'}}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column prop="id">
+      <ng-template let-column="column" ngx-datatable-header-template>
+        Action
+      </ng-template>
+      <ng-template ngx-datatable-cell-template let-value="value">
+        <button type="button" class="btn btn-primary" (click)="delete(value)">Delete</button>
+      </ng-template>
+    </ngx-datatable-column>
+    </ngx-datatable>
+  </div>
